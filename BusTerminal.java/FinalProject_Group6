@@ -1,0 +1,69 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner; 
+
+public class BustTerminal {
+public static void main(String[] args) {
+ //Initialization
+ String Name = "";
+ Scanner scan = new Scanner(System.in);
+ Queue<String> queue = new LinkedList<>();
+ int Number, cancel = 0;
+ int ctr = 0;
+ String ans,ans2 = "";
+
+ System.out.println("Welcome to the Bus Terminal Station. How many tickets do you want to purchase?");
+ Number = scan.nextInt();
+ System.out.println(Number + " tickets to be bought.");
+
+ //while loop to scan for Name and add them to list
+ while(ctr < Number){ //used to determine the number of loops needed to add the number of names inputted to the list
+ System.out.print("Please input the name of passenger number " + ctr + ": ");
+ Name = scan.next();
+ queue.add(Name);
+ ctr ++; 
+ }
+
+//print list to confirm data inside
+System.out.println("Please confirm your list of passenger names.");
+System.out.println(queue);
+
+
+
+System.out.println("Is this correct? Yes/No");
+ans = scan.next();
+if(ans.toLowerCase().trim().equals("no")){
+System.out.println("Do you want to cancel the ticket from the list? Yes/No");
+ans2 = scan.next();
+while(ans2.toLowerCase().trim().equals ("yes")){
+System.out.println("Do you want to cancel the tickets?");
+cancel = scan.nextInt();
+
+
+
+if(cancel > 0 && cancel < Number){
+  queue.remove();
+  System.out.println(queue);
+  System.out.println("Do you want to cancel another ticket? Yes/No");
+  ans2 = scan.next();
+
+    }
+ else{
+    System.out.println("Invalid input! Please input a valid ticket number greater than 0!");
+    System.out.println("Do you want to cancel another ticket?");
+    ans2 = scan.next();
+    }
+  }
+}
+ 
+
+ System.out.print("Please input your destination.");
+ String Place = scan.next();
+
+ System.out.printf("Queue: %s%n", queue);
+ System.out.println("Good day passenger/s! you will now board to " + Place + ", thank you for choosing this terminal, stay safe and take care!");
+
+ 
+}
+}
+
